@@ -23,17 +23,7 @@ runs:
       shell: bash
 
     - run: echo ${{ steps.release_version.outputs.versionRelease }}
-    
-    - name: Release verification
-      uses: octokit/request-action@v2.x
-      continue-on-error: true
-      id: get_latest_release
-      with:
-        route: GET /repos/:repository/releases/tags/:tags
-        repository: ${{ github.repository }}
-        tags: ${{ steps.release_version.outputs.versionRelease }}
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      shell: bash
 
     - run: ${{ github.action_path }}/goodbye.sh
       shell: bash
