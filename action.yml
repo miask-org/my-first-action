@@ -25,10 +25,5 @@ runs:
     - run: echo ${{ steps.release_version.outputs.versionRelease }}
       shell: bash
 
-    - run: echo "##[set-output name=payload;]$(curl -H  'Authorization: token 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' https://api.github.com/repos/miask-org/mule-sample-2/releases/tags/1.0.0)"
-      shell: bash
-
-    - run: echo $payload
-
     - run: ${{ github.action_path }}/goodbye.sh
       shell: bash
