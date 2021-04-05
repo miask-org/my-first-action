@@ -25,5 +25,8 @@ runs:
     - run: echo ${{ steps.release_version.outputs.versionRelease }}
       shell: bash
 
+    - run: curl -i -H "Authorization:${{ secrets.GITHUB_TOKEN }}""\https://api.github.com/repos/miask-org/mule-sample-2/release/tags/1.0.0" --output output.txt --silent
+      shell: bash
+
     - run: ${{ github.action_path }}/goodbye.sh
       shell: bash
